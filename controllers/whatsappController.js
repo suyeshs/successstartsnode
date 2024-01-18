@@ -5,7 +5,7 @@ const getWhatsAppTemplates = async (req, res) => {
         const whatsappBusinessAccountId = "159102517296083";
         const fields = "";
         const limit = "10";
-        const accessToken = "EAANJt8kivpwBOwU7VZBUWfr1Ws3ReglXwCcuRD5vqAjEUtiXAZAZB2WpvWfVnHRMgYeQdP1zW24AZCOEjH19K4PhwDHmu2ZAK2dtpei5PlZBlzaWuUCNkfn1ct5ufKopfE10aALk0yOUDzrVwklLYbFMEZA3ppor4NeGf2P9R9z9MqF8kiZBtfwIt1mrt8WbgGFBnnzVGUM1IXluCBgXdyMZD";
+        const accessToken = "EAANJt8kivpwBO4lGZAxVhiWU1Xt4BtTgUWHB6ga1c5DVfreqZCl72c7wugdwa4R5sZBQcGZBEXrCgbir9S5B5BFi9jqb9ZACPnTAAi6NAkZAXYMLBiz2nV1yzCxNeg22nzB29WEoJcWhYSPHEMQt6B6y8MMlfGYOhWOoRLy828BJbAGx5lGgrygU5ZAQOaag3ZCHKkueyXa6fvGpK3XfrA0ZD";
 
         const url = `https://graph.facebook.com/v18.0/${whatsappBusinessAccountId}/message_templates`;
         const params = {
