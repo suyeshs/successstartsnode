@@ -7,17 +7,24 @@ const facebookController = require('./controllers/facebookController');
 const app = express();
 const port = 3000;
 
-// Enable CORS
-//app.use(cors());
+// Define the allowCors middleware
+const allowCors = fn => async (req, res) => {
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+    return await fn(req, res);
+};
 
-// In your server-side code
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
-
+// Enable CORS for all routes
+app.use(allowCors);
 
 // Define routes
 
@@ -28,8 +35,6 @@ app.get('/', (req, res) => {
 
 // WhatsApp API route
 app.get('/api/whatsapp-templates', whatsappController.getWhatsAppTemplates);
-
-
 
 // Facebook Message route
 app.post('/api/send-message', facebookController.sendMessage);
